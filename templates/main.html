@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>Eulearn</title>
+        <link rel="stylesheet" href = "{{url_for('static', filename = 'css/styles.css')}}">
+        <link rel = "stylesheet" href = "{{url_for('static', filename = 'css/pagetransition.css')}}">
+        <link rel = "icon" href = "{{url_for('static', filename = 'images/owlonly.png')}}" type = "image/png">
+
+    </head>
+    <body>
+        <nav>
+                <div class="navdiv">
+                    <div class="logo"><a href="{{url_for('main')}}"><img src="{{url_for('static', filename = 'images/logo.png')}}" alt="Eulearn Logo"></a></div>
+                    <ul>
+                        <li><a href="{{url_for('solver_page')}}" class="navlink">Integral Solver</a></li>
+                        <li><a href="{{url_for('techniques_page')}}" class="navlink">Techniques</a></li>
+                        <li><a href="{{url_for('about')}}" class="navlink">About</a></li>
+                        <button class="button" id="login" onclick="window.location.href='{{url_for('login_page')}}'">Login</button>
+                        <button class="button" onclick="window.location.href='{{url_for('getstarted')}}'">Get Started</button>
+                    </ul>
+                </div>
+            
+        </nav>
+        <div class="intro">
+            <h1 class="welcome-title-main">Welcome to Eulearn</h1>
+            <p>Empowering students to succeed in high-level math through our cost-free Integral Solver's step-by-step explanations and practice problems.</p>
+            <div class="get-started">
+                <button class="button" id="welcome-get-started-btn" onclick="window.location.href='{{url_for('getstarted')}}'">Get Started</button>
+                <p id="track-progress-message">to use the Integral Solver and track progress.</p>
+            </div>            
+        </div>
+        <div class="third-row">
+            <h2>How It Works:</h2>
+        </div>
+        <div class="fourth-row">
+            <div class="how-it-works-item">
+                <img src="{{url_for('static', filename = 'images/solver.png')}}" alt="Integral Solver">
+                <h3>Integral Solver</h3>
+                <p>Step-by-step solutions for Regular, Parametric, and Polar integrals, incorporating LaTeX rendering and Desmos graphs for full comprehension.</p>
+            </div>
+            <div class="how-it-works-item">
+                <img src="{{url_for('static', filename = 'images/practice.png')}}" alt="Targeted Practice">
+                <h3>Targeted Practice</h3>
+                <p>In-site practice problems for all three problem types and four different difficulty levels to target weak areas.</p>
+            </div>
+            <div class="how-it-works-item">
+                <img src="{{url_for('static', filename = 'images/techniques.png')}}" alt="Fundamentals">
+                <h3>Fundamentals</h3>
+                <p>Detailed review of core integration techniques to ensure a strong foundation.</p>
+            </div>
+        </div>
+        <script src = "{{url_for('static', filename = 'js/navbar-scroll.js')}}"></script>
+        <script src="{{url_for('static', filename = 'js/auth-check.js')}}"></script>
+    </body>    
+    
+</html>

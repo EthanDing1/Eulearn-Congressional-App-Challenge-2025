@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>Eulearn | Integration Techniques</title>
+        <link rel="stylesheet" href="{{url_for('static', filename = 'css/styles.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename = 'css/pagetransition.css')}}">
+        <link rel="icon" href="{{url_for('static', filename = 'images/owlonly.png')}}" type="image/png">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    </head>
+    <body class="techniques-body">
+        <nav>
+            <div class="navdiv">
+                <div class="logo"><a href="{{url_for('main')}}"><img src="{{url_for('static', filename = 'images/logo.png')}}" alt="Eulearn Logo"></a></div>
+                <ul>
+                    <li><a href="{{url_for('solver_page')}}" class="navlink">Integral Solver</a></li>
+                    <li><a href="{{url_for('techniques_page')}}" class="navlink">Techniques</a></li>
+                    <li><a href="{{url_for('about')}}" class="navlink">About</a></li>
+                    <button class="button" id="login" onclick="window.location.href='{{url_for('login_page')}}'">Login</button>
+                    <button class="button" onclick="window.location.href='{{url_for('getstarted')}}'">Get Started</button>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="techniques-container">
+            <div class="techniques-header">
+                <link rel="icon" href="{{url_for('static', filename = 'images/owlonly.png')}}" type="image/png">
+                <h1>Integration Techniques & Input Guide</h1>
+                <p class="header-subtitle">Master integration methods and learn how to input expressions correctly</p>
+            </div>
+
+            <section class="techniques-section">
+                <h2 class="section-title">Input Instructions</h2>
+                <div class="section-content">
+                    <p class="section-intro">Learn how to properly format your mathematical expressions for the integral solver.</p>
+                    
+                    <div class="instruction-grid">
+                        <div class="instruction-card">
+                            <h3>Basic Operations</h3>
+                            <ul class="instruction-list">
+                                <li><span class="operator">+</span> Addition: <code>x + 5</code></li>
+                                <li><span class="operator">-</span> Subtraction: <code>x - 3</code></li>
+                                <li><span class="operator">*</span> Multiplication: <code>2*x</code> or <code>2x</code></li>
+                                <li><span class="operator">/</span> Division: <code>x/2</code> or <code>(x+1)/(x-1)</code></li>
+                            </ul>
+                        </div>
+
+                        <div class="instruction-card">
+                            <h3>Powers & Exponents</h3>
+                            <ul class="instruction-list">
+                                <li><span class="operator">^</span> or <span class="operator">**</span> Power: <code>x^2</code> or <code>x**2</code></li>
+                                <li>Square root: <code>sqrt(x)</code></li>
+                                <li>Cube root: <code>cbrt(x)</code></li>
+                                <li>General root: <code>x^(1/n)</code></li>
+                            </ul>
+                        </div>
+
+                        <div class="instruction-card">
+                            <h3>Trigonometric Functions</h3>
+                            <ul class="instruction-list">
+                                <li><code>sin(x)</code>, <code>cos(x)</code>, <code>tan(x)</code></li>
+                                <li><code>csc(x)</code>, <code>sec(x)</code>, <code>cot(x)</code></li>
+                                <li>Inverse: <code>asin(x)</code>, <code>acos(x)</code>, <code>atan(x)</code></li>
+                                <li>Hyperbolic: <code>sinh(x)</code>, <code>cosh(x)</code>, <code>tanh(x)</code></li>
+                            </ul>
+                        </div>
+
+                        <div class="instruction-card">
+                            <h3>Logarithms & Exponentials</h3>
+                            <ul class="instruction-list">
+                                <li>Natural log: <code>ln(x)</code></li>
+                                <li>Common log: <code>log(x)</code></li>
+                                <li>Exponential: <code>e^x</code> or <code>exp(x)</code></li>
+                                <li>Custom base: <code>log(x, base)</code></li>
+                            </ul>
+                        </div>
+
+                        <div class="instruction-card">
+                            <h3>Parentheses & Grouping</h3>
+                            <ul class="instruction-list">
+                                <li><span class="operator">()</span> Grouping: <code>(x+1)*(x-1)</code></li>
+                                <li>Nested: <code>((x+1)^2)/((x-1)^2)</code></li>
+                                <li>With functions: <code>sin(2*x + 1)</code></li>
+                                <li>Always match opening and closing parentheses</li>
+                            </ul>
+                        </div>
+
+                        <div class="instruction-card">
+                            <h3>Special Constants</h3>
+                            <ul class="instruction-list">
+                                <li><span class="operator">e</span> Euler's number: <code>e</code></li>
+                                <li><span class="operator">π</span> Pi: <code>pi</code></li>
+                                <li>Examples: <code>e^(pi*x)</code></li>
+                                <li>Use constants directly in expressions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="techniques-section">
+                <h2 class="section-title">Integration Techniques</h2>
+                <div class="section-content">
+                    <p class="section-intro">Essential integration methods for AP Calculus students.</p>
+
+                    <div class="technique-accordion">
+                        
+                        <div class="technique-item">
+                            <button class="technique-header" onclick="toggleTechnique(this)">
+                                <span class="technique-name">U-Substitution</span>
+                                <span class="toggle-icon">+</span>
+                            </button>
+                            <div class="technique-content">
+                                <p class="technique-description">Use if a composite function and its derivative are present in the integral.</p>
+                                
+                                <div class="technique-steps">
+                                    <h4>Steps:</h4>
+                                    <ol>
+                                        <li>Let \(u\) = inner function.</li>
+                                        <li>Compute \(du\).</li>
+                                        <li>Rewrite the integral in \(u\), integrate, then rewrite in terms of \(x\).</li>
+                                    </ol>
+                                </div>
+
+                                <div class="technique-example">
+                                    <h4>Example:</h4>
+                                    <p>\[\int 2x \cos(x^2) \, dx\]</p>
+                                    <p class="example-solution">
+                                        \(u = x^2\), \(du = 2x \, dx\) <br><br>
+                                        \(\displaystyle \int \cos(u) \, du = \sin(u) + C = \sin(x^2) + C\)
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="technique-item">
+                            <button class="technique-header" onclick="toggleTechnique(this)">
+                                <span class="technique-name">Integration by Parts</span>
+                                <span class="toggle-icon">+</span>
+                            </button>
+                            <div class="technique-content">
+                                <p class="technique-description">
+                                    Use when one function of the integral simplifies upon differentiation and the other can be easily integrated. Useful when methods like u-sub fail.
+                                </p>
+                                
+                                <div class="technique-formula">
+                                    <h4>Formula:</h4>
+                                    <p>\[\int u \, dv = uv - \int v \, du\]</p>
+                                </div>
+
+                                <div class="technique-steps">
+                                    <h4>LIATE rule:</h4>
+                                    <p>The function in the integrand that appears first (left to right) in the LIATE order should be \(u\).</p>
+                                    <p><strong>L</strong>og → <strong>I</strong>nverse Trig → <strong>A</strong>lgebraic → <strong>T</strong>rig → <strong>E</strong>xponential</p>
+                                </div>
+
+                                <div class="technique-example">
+                                    <h4>Example:</h4>
+                                    <p>\[\int x e^x \, dx\]</p>
+                                    <p class="example-solution">
+                                        \(u = x\), \(dv = e^x \, dx\)<br>
+                                        \(du = dx\), \(v = e^x\)<br><br>
+                                        Apply formula: \(\displaystyle \int u \, dv = uv - \int v \, du\)<br><br>
+                                        \(\displaystyle \int x e^x \, dx = x \cdot e^x - \int e^x \, dx\)<br><br>
+                                        \(= x \cdot e^x - e^x + C\)<br><br>
+                                        \(= e^x(x - 1) + C\)
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="technique-item">
+                            <button class="technique-header" onclick="toggleTechnique(this)">
+                                <span class="technique-name">Trig Substitution</span>
+                                <span class="toggle-icon">+</span>
+                            </button>
+                            <div class="technique-content">
+                                <p class="technique-description">Eliminate radicals with trigonometric substitution.</p>
+                                
+                                <div class="technique-cases">
+                                    <h4>Three cases:</h4>
+                                    <ul>
+                                        <li>For \(\sqrt{a^2 - x^2}\): substitute \(x = a\sin(\theta)\)</li><br>
+                                        <li>For \(\sqrt{a^2 + x^2}\): substitute \(x = a\tan(\theta)\)</li><br>
+                                        <li>For \(\sqrt{x^2 - a^2}\): substitute \(x = a\sec(\theta)\)</li>
+                                    </ul>
+                                </div>
+
+                                <div class="technique-steps">
+                                    <h4>Steps:</h4>
+                                    <p>Find appropriate case → substitute \(x\) → simplify radical → integrate to produce result in terms of \(\theta\) → use triangle (created by the substitution) to rewrite solution in terms of \(x\).</p>
+                                </div>
+                                <div class="technique-example">
+                                    <h4>Example:</h4>
+                                    <p>\[\int \sqrt{9 - x^2} \, dx\]</p>
+                                    <p class="example-solution">
+                                        Pattern: \(\sqrt{a^2 - x^2}\) where \(a = 3\)<br><br>
+                                        Substitute: \(x = 3\sin(\theta)\), \(dx = 3\cos(\theta) \, d\theta\)<br><br>
+                                        \(\sqrt{9 - x^2} = \sqrt{9 - 9\sin^2(\theta)} = \sqrt{9\cos^2(\theta)} = 3\cos(\theta)\)<br><br>
+                                        \(\displaystyle \int 3\cos(\theta) \cdot 3\cos(\theta) \, d\theta = 9 \int \cos^2(\theta) \, d\theta\)<br><br>
+                                        \(\displaystyle = 9 \int \frac{1 + \cos(2\theta)}{2} \, d\theta\)<br><br>
+                                        \(\displaystyle = \frac{9}{2}\left(\theta + \frac{\sin(2\theta)}{2}\right) + C\)<br><br>
+                                        \(\displaystyle = \frac{9}{2}\left(\theta + \sin(\theta)\cos(\theta)\right) + C\)<br><br>
+                                        Draw triangle: \(\sin(\theta) = \frac{x}{3}\), so \(\theta = \arcsin\left(\frac{x}{3}\right)\), \(\cos(\theta) = \frac{\sqrt{9-x^2}}{3}\)<br><br>
+                                        Result: \(\displaystyle \frac{9}{2}\arcsin\left(\frac{x}{3}\right) + \frac{x\sqrt{9-x^2}}{2} + C\)
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="technique-item">
+                            <button class="technique-header" onclick="toggleTechnique(this)">
+                                <span class="technique-name">Partial Fraction Decomposition</span>
+                                <span class="toggle-icon">+</span>
+                            </button>
+                            <div class="technique-content">
+                                <p class="technique-description">Breaking down a polynomial fraction into the sum of simpler fractions.</p>
+                                
+                                <div class="technique-steps">
+                                    <h4>Steps:</h4>
+                                    <ol>
+                                        <li>If numerator's degree ≥ denominator's degree → long division first.</li><br>
+                                        <li>Factor denominator completely.</li><br>
+                                        <li>Write the fraction as a sum of fractions, and solve for constants.</li><br>
+                                        <li>Integrate each term.</li>
+                                    </ol>
+                                </div>
+
+                                <div class="technique-example">
+                                    <h4>Example:</h4>
+                                    <p>\[\int \frac{3x+5}{(x+1)(x-2)} \, dx\]</p>
+                                    <p class="example-solution">
+                                        Set up: \(\displaystyle \frac{3x+5}{(x+1)(x-2)} = \frac{A}{x+1} + \frac{B}{x-2}\)<br><br>
+                                        Multiply both sides by \((x+1)(x-2)\):<br>
+                                        \(3x + 5 = A(x-2) + B(x+1)\)<br><br>
+                                        Solve for \(A\) and \(B\) by substituting smart values:<br><br>
+                                        Let \(x = 2\): \(3(2) + 5 = 0 + B(3) \Rightarrow 11 = 3B \Rightarrow B = \frac{11}{3}\)<br><br>
+                                        Let \(x = -1\): \(3(-1) + 5 = A(-3) + 0 \Rightarrow 2 = -3A \Rightarrow A = -\frac{2}{3}\)<br><br>
+                                        \(\displaystyle \int \left[-\frac{2}{3} \cdot \frac{1}{x+1} + \frac{11}{3} \cdot \frac{1}{x-2}\right] dx\)<br><br>
+                                        \(\displaystyle = -\frac{2}{3}\ln|x+1| + \frac{11}{3}\ln|x-2| + C\)
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="technique-item">
+                            <button class="technique-header" onclick="toggleTechnique(this)">
+                                <span class="technique-name">Trigonometric Integrals</span>
+                                <span class="toggle-icon">+</span>
+                            </button>
+                            <div class="technique-content">
+                                <p class="technique-description">Integrals with trigonometric functions</p>
+                                
+                                <div class="technique-cases">
+                                    <h4>Strategies:</h4>
+                                    <ul>
+                                        <li>\(\displaystyle \int \sin^m(x) \cdot \cos^n(x) \, dx\):</li><br><br>
+                                        <li>If one odd and one even: If sin is odd, save one sin. Write remaining \(\sin^2(x)\) as \(1-\cos^2(x)\) and substitute \(u=\cos(x)\). If cos is odd, save one cos. Write remaining \(\cos^2(x)\) as \(1-\sin^2(x)\) and substitute \(u=\sin(x)\).</li><br><br>
+                                        <li>If both odd: Pick either option from above.</li><br><br>
+                                        <li>If both even: use half angle or power reduction formulas.</li><br><br><br>
+
+                                        <li>\(\displaystyle \int \tan^m(x) \cdot \sec^n(x) \, dx\):</li><br><br>
+                                        <li>If sec is even: save a \(\sec^2(x)\) and use \(u=\tan(x)\). If tan is odd: save a \(\sec(x)\tan(x)\) and use \(u=\sec(x)\).</li><br><br>
+                                        <li>If neither condition is satisfied (such as tan even, sec odd) convert the integrand using the identity \(\sec^2(x) = 1 + \tan^2(x)\) and try to produce a \(\sec^2(x)\) factor or convert to sin/cos</li>
+                                    </ul>
+                                </div>
+
+                                <div class="technique-identities">
+                                    <h4>Important Formulas:</h4>
+                                    <ul>
+                                        <li>\(\sin^2(x) + \cos^2(x) = 1\)</li><br>
+                                        <li>\(\sin(2x) = 2\sin(x)\cos(x)\)</li><br>
+                                        <li>\(\cos(2x) = \cos^2(x) - \sin^2(x) = 2\cos^2(x) - 1 = 1 - 2\sin^2(x)\)</li><br>
+                                        <li>\(1 + \tan^2(x) = \sec^2(x)\)</li><br>
+                                        <li>\(1 + \cot^2(x) = \csc^2(x)\)</li><br>
+                                        <li>\(\displaystyle \sin^2(x) = \frac{1 - \cos(2x)}{2}\)</li><br>
+                                        <li>\(\displaystyle \cos^2(x) = \frac{1 + \cos(2x)}{2}\)</li><br>
+                                    </ul>
+                                </div>
+                                <div class="technique-example">
+                                    <h4>Example:</h4>
+                                    <p>\[\int \sin^3(x) \cdot \cos^2(x) \, dx\]</p>
+                                    <p class="example-solution">
+                                        Strategy: sin is odd → save one \(\sin(x)\) and use \(u = \cos(x)\).<br><br>
+                                        Rewrite \(\sin^3(x)\) as \((\sin^2(x))(\sin(x))\) and use \(\sin^2(x) = 1 - \cos^2(x)\):<br><br>
+                                        \(\displaystyle \int \sin^3(x) \cdot \cos^2(x) \, dx = \int (1 - \cos^2(x)) \cdot \cos^2(x) \cdot (\sin(x) \, dx)\)<br><br>
+                                        Let \(u = \cos(x) \Rightarrow du = -\sin(x) \, dx \Rightarrow \sin(x) \, dx = -du\)<br><br>
+                                        Substitute:<br>
+                                        \(\displaystyle -\int (1 - u^2) \cdot u^2 \, du = -\int (u^2 - u^4) \, du\)<br><br>
+                                        Integrate:<br>
+                                        \(\displaystyle -\left(\frac{u^3}{3} - \frac{u^5}{5}\right) + C\)<br><br>
+                                        Replace \(u = \cos(x)\):<br>
+                                        \(\displaystyle -\frac{\cos^3(x)}{3} + \frac{\cos^5(x)}{5} + C\)
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="technique-item">
+                            <button class="technique-header" onclick="toggleTechnique(this)">
+                                <span class="technique-name">Special Techniques: Cyclic Integration by Parts</span>
+                                <span class="toggle-icon">+</span>
+                            </button>
+                            <div class="technique-content">
+                                <p class="technique-description">When integrating products of exponential and trigonometric functions, integration by parts creates a cyclic pattern that allows us to solve algebraically.</p>
+                                
+                                <div class="technique-example">
+                                    <h4>Complete Example:</h4>
+                                    <p>\[\int \sin(x) \cdot e^x \, dx\]</p>
+                                    
+                                    <div class="example-solution">
+                                        <h4>Step 1: First Application of Integration by Parts</h4>
+                                        <p>Using the LIATE rule, choose:<br>
+                                        \(u = \sin(x)\), \(dv = e^x \, dx\)<br>
+                                        \(du = \cos(x) \, dx\), \(v = e^x\)</p>
+                                        
+                                        <p>Apply the integration by parts formula:<br>
+                                        \[\int u \, dv = uv - \int v \, du\]</p>
+                                        
+                                        <p>\[\int \sin(x) \cdot e^x \, dx = \sin(x) \cdot e^x - \int e^x \cos(x) \, dx\]</p>
+                                        
+                                        <h4>Step 2: Second Application of Integration by Parts</h4>
+                                        <p>We need to evaluate \(\displaystyle \int e^x \cos(x) \, dx\)</p>
+                                        
+                                        <p>Choose:<br>
+                                        \(u = \cos(x)\), \(dv = e^x \, dx\)<br>
+                                        \(du = -\sin(x) \, dx\), \(v = e^x\)</p>
+                                        
+                                        <p>Apply integration by parts again:<br>
+                                        \[\int e^x \cos(x) \, dx = \cos(x) \cdot e^x - \int e^x \cdot (-\sin(x)) \, dx\]</p>
+                                        
+                                        <p>\[\int e^x \cos(x) \, dx = e^x \cos(x) + \int e^x \sin(x) \, dx\]</p>
+                                        
+                                        <h4>Step 3: Substitute Back</h4>
+                                        <p>Substitute this result into our equation from Step 1:<br>
+                                        \[\int \sin(x) \cdot e^x \, dx = \sin(x) \cdot e^x - \left[e^x \cos(x) + \int e^x \sin(x) \, dx\right]\]</p>
+                                        
+                                        <p>\[\int \sin(x) \cdot e^x \, dx = e^x \sin(x) - e^x \cos(x) - \int e^x \sin(x) \, dx\]</p>
+                                        
+                                        <h4>Step 4: Solve Algebraically</h4>
+                                        <p>Notice that the original integral appears on both sides! Let \(I = \displaystyle \int e^x \sin(x) \, dx\)</p>
+                                        
+                                        <p>\[I = e^x \sin(x) - e^x \cos(x) - I\]</p>
+                                        
+                                        <p>Add \(I\) to both sides:<br>
+                                        \[2I = e^x \sin(x) - e^x \cos(x)\]</p>
+                                        
+                                        <p>Divide by 2:<br>
+                                        \[I = \frac{e^x \sin(x) - e^x \cos(x)}{2}\]</p>
+                                        
+                                        <p>Factor out \(e^x\):<br>
+                                        \[I = \frac{e^x(\sin(x) - \cos(x))}{2}\]</p>
+                                        
+                                        <h4>Final Answer:</h4>
+                                        <p>\[\boxed{\int \sin(x) \cdot e^x \, dx = \frac{e^x(\sin(x) - \cos(x))}{2} + C}\]</p>
+                                        
+                                        <h4>Key Insight:</h4>
+                                        <p>The "cyclic" nature occurs because:<br>
+                                        • Differentiating \(\sin(x)\) gives \(\cos(x)\)<br>
+                                        • Differentiating \(\cos(x)\) gives \(-\sin(x)\) (returns to original function)<br>
+                                        • Integrating \(e^x\) always gives \(e^x\) (stays the same)<br><br>
+                                        This creates a loop that allows us to solve for the original integral algebraically!</p>
+                                        
+                                        <h4>Verification:</h4>
+                                        <p>You can verify this answer by differentiating:<br>
+                                        \[\frac{d}{dx}\left[\frac{e^x(\sin(x) - \cos(x))}{2}\right] = \sin(x) \cdot e^x \,\checkmark\]</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <script src="{{url_for('static', filename = 'js/navbar-scroll.js')}}"></script>
+        <script src="{{url_for('static', filename = 'js/auth-check.js')}}"></script>
+        <script>
+            function toggleTechnique(button) {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('.toggle-icon');
+                const isOpen = content.style.maxHeight;
+
+                document.querySelectorAll('.technique-content').forEach(item => {
+                    item.style.maxHeight = null;
+                    item.previousElementSibling.querySelector('.toggle-icon').textContent = '+';
+                });
+
+                if (!isOpen) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    icon.textContent = '−';
+                } else {
+                    content.style.maxHeight = null;
+                    icon.textContent = '+';
+                }
+            }
+
+            document.addEventListener("DOMContentLoaded", function() {
+                renderMathInElement(document.body, {
+                    delimiters: [
+                        {left: "\\[", right: "\\]", display: true},
+                        {left: "\\(", right: "\\)", display: false},
+                        {left: "$", right: "$", display: false}
+                    ],
+                    throwOnError: false
+                });
+            });
+
+            const originalToggle = toggleTechnique;
+            toggleTechnique = function(button) {
+                originalToggle(button);
+                setTimeout(() => {
+                    renderMathInElement(document.body, {
+                        delimiters: [
+                            {left: "\\[", right: "\\]", display: true},
+                            {left: "\\(", right: "\\)", display: false},
+                            {left: "$", right: "$", display: false}
+                        ],
+                        throwOnError: false
+                    });
+                }, 100);
+            };
+        </script>
+    </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>Eulearn | Sign Up</title>
+        <link rel = "stylesheet" href = "{{url_for('static', filename = 'css/styles.css')}}">
+        <link rel = "stylesheet" href = "{{url_for('static', filename = 'css/pagetransition.css')}}">
+        <link rel = "icon" href = "{{url_for('static', filename = 'images/owlonly.png')}}" type = "image/png">
+
+    </head>
+    <body id="login-body">
+        <nav>
+            
+                <div class="navdiv">
+                    <div class="logo"><a href="{{url_for('main')}}"><img src="{{url_for('static', filename = 'images/logo.png')}}" alt="Eulearn Logo"></a></div>
+                    <ul>
+                        <li><a href="{{url_for('solver_page')}}" class="navlink">Integral Solver</a></li>
+                        <li><a href="{{url_for('techniques_page')}}" class="navlink">Techniques</a></li>
+                        <li><a href="{{url_for('about')}}" class="navlink">About</a></li>
+                        <button class="button" id="login" onclick="window.location.href='{{url_for('login_page')}}'">Login</button>
+                        <button class="button" onclick="window.location.href='{{url_for('getstarted')}}'">Get Started</button>
+                    </ul>
+                </div>
+            
+        </nav>
+        <div class="login-form">
+            <img src="{{ url_for('static', filename='images/owlonly.png') }}" alt="Eulearn Owl Logo">
+            <h2>Get Started</h2>
+            <h4 id="get-started-subtitle">Achieve your full potential with Eulearn!</h4>
+            <div class="form-element">
+                <form novalidate action="">
+                    <div class="input-row">
+                        <div class="input-box">
+                            <input type="text" placeholder="First Name" title="First Name" required>
+                            <span class="error-msg"></span>
+                        </div>
+                        <div class="input-box">
+                            <input type="text" placeholder="Last Name" title="Last Name" required>
+                            <span class="error-msg"></span>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" placeholder="Email Address" title="Email Address" required>
+                        <span class="error-msg"></span>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" placeholder="Password" title="Password" required>
+                        <span class="error-msg"></span>
+                    </div>
+
+                    <div class="input-box">
+                        <button type="submit" class="button" title="Sign Up">Sign Up</button>
+                    </div>
+                    <div class="oauth-container">
+                        <a href="{{ url_for('login_google') }}" 
+                        class="oauth-btn google-btn" 
+                        style="width:310px;">
+                            <img src="{{ url_for('static', filename='images/google-logo.png') }}" 
+                                alt="Google Logo" class="oauth-logo">
+                            Sign up with Google
+                        </a>
+
+                        <a href="{{ url_for('login_github') }}" 
+                        class="oauth-btn github-btn" 
+                        style="width:310px;">
+                            <div class="oauth-logo-wrapper">
+                                <img src="{{ url_for('static', filename='images/github-logo.png') }}" 
+                                    alt="GitHub Logo" class="oauth-logo">
+                            </div>
+                            Sign up with GitHub
+                        </a>
+                    </div>
+
+                    <div class="register-link">
+                        <p>Already have an account? <a href="{{url_for('login_page')}}" title="Log In">Log In</a> instead.</p>
+                    </div>
+                </form>
+            </div>
+            
+            
+        </div>
+        <script src = "{{url_for('static', filename = 'js/navbar-scroll.js')}}"></script>
+        <script src = "{{url_for('static', filename = 'js/signup-validation.js')}}"></script>
+        <script src="{{url_for('static', filename = 'js/auth-check.js')}}"></script>
+    </body>
+</html>

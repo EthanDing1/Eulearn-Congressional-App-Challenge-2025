@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>Eulearn | Profile Settings</title>
+        <link rel="stylesheet" href="{{url_for('static', filename = 'css/styles.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename = 'css/pagetransition.css')}}">
+        <link rel="icon" href="{{url_for('static', filename = 'images/owlonly.png')}}" type="image/png">
+
+    </head>
+    <body id="login-body">
+        <nav>
+            <div class="navdiv">
+                <div class="logo"><a href="{{url_for('main')}}"><img src="{{url_for('static', filename = 'images/logo.png')}}" alt="Eulearn Logo"></a></div>
+                <ul>
+                    <li><a href="{{url_for('solver_page')}}" class="navlink">Integral Solver</a></li>
+                    <li><a href="{{url_for('techniques_page')}}" class="navlink">Techniques</a></li>
+                    <li><a href="{{url_for('about')}}" class="navlink">About</a></li>
+                    <button class="button" id="login" onclick="window.location.href='{{url_for('login_page')}}'">Login</button>
+                    <button class="button" onclick="window.location.href='{{url_for('getstarted')}}'">Get Started</button>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="login-form">
+            <img src="{{url_for('static', filename = 'images/owlonly.png')}}">
+            <h2>Profile Settings</h2>
+            <h4 id="get-started-subtitle">Manage your account information</h4>
+            
+            <div class="form-element">
+                <h3 style="color: #333; margin-bottom: 20px; text-align: left;">Personal Information</h3>
+                <form id="personal-info-form" novalidate>
+                    <div class="input-row">
+                        <div class="input-box">
+                            <input type="text" id="firstName" placeholder="First Name" title="First Name" required>
+                            <span class="error-msg"></span>
+                        </div>
+                        <div class="input-box">
+                            <input type="text" id="lastName" placeholder="Last Name" title="Last Name" required>
+                            <span class="error-msg"></span>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <input type="email" id="email" placeholder="Email Address" title="Email Address" required>
+                        <span class="error-msg"></span>
+                    </div>
+                    <div class="input-box">
+                        <button type="submit" class="button" title="Update Information">Update Information</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="form-element" style="margin-top: 40px;">
+                <h3 style="color: #333; margin-bottom: 20px; text-align: left;">Change Password</h3>
+                <form id="password-form" novalidate>
+                    <div class="input-box">
+                        <input type="password" id="currentPassword" placeholder="Current Password" title="Current Password" required>
+                        <span class="error-msg"></span>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" id="newPassword" placeholder="New Password" title="New Password" required>
+                        <span class="error-msg"></span>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" id="confirmPassword" placeholder="Confirm New Password" title="Confirm New Password" required>
+                        <span class="error-msg"></span>
+                    </div>
+                    <div class="input-box">
+                        <button type="submit" class="button" title="Change Password">Change Password</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="form-element" style="margin-top: 40px;">
+                <h3 style="color: #333; margin-bottom: 20px; text-align: left;">Logout</h3>
+                <div class="input-box">
+                    <button type="button" class="button" onclick="logout()" title="Logout">Logout</button>
+                </div>
+            </div>
+
+            <div class="form-element" style="margin-top: 40px; border-top: 2px solid #e9ecef; padding-top: 30px;">
+                <h3 style="color: #dc3545; margin-bottom: 20px; text-align: left;">Danger Zone</h3>
+                <p style="color: #666; margin-bottom: 20px; font-size: 14px; text-align: left;">
+                    Deleting your account is permanent and cannot be undone. All your data will be lost.
+                </p>
+                <div class="input-box">
+                    <button type="button" id="delete-account-btn" class="button" style="background-color: #dc3545; border-color: #dc3545;" title="Delete Account">Delete Account</button>
+                </div>
+            </div>
+
+            <div class="register-link" style="margin-top: 30px;">
+                <p><a href="{{url_for('main')}}" title="Back to Dashboard">← Back to Dashboard</a></p>
+            </div>
+        </div>
+
+        <div id="delete-modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <h3 style="color: #dc3545; margin-bottom: 15px;">Confirm Account Deletion</h3>
+                <p style="margin-bottom: 20px;">Are you sure you want to delete your account? This action cannot be undone and all your data will be permanently lost.</p>
+                <div style="display: flex; gap: 15px; justify-content: center;">
+                    <button id="confirm-delete-btn" class="button" style="background-color: #dc3545; border-color: #dc3545;">Yes, Delete My Account</button>
+                    <button id="cancel-delete-btn" class="button" style="background-color: #6c757d; border-color: #6c757d;">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <script src="{{url_for('static', filename = 'js/navbar-scroll.js')}}"></script>
+        <script src="{{url_for('static', filename = 'js/profile-settings.js')}}"></script>
+        <script src="{{url_for('static', filename = 'js/auth-check.js')}}"></script>
+
+        <script>
+            async function logout() {
+                try {
+                    const response = await fetch('/api/auth/logout', {
+                        method: 'POST',
+                        credentials: 'include'
+                    });
+                    
+                    if (response.ok) {
+                        window.location.href = '/login';
+                    }
+                } catch (error) {
+                    console.error('Logout failed:', error);
+                    alert('Logout failed. Please try again.');
+                }
+            }
+        </script>
+
+        <style>
+            .modal {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 2000;
+            }
+            
+            .modal-content {
+                background: white;
+                padding: 30px;
+                border-radius: 12px;
+                text-align: center;
+                max-width: 400px;
+                margin: 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            }
+            
+            .form-element h3 {
+                font-weight: 600;
+                font-size: 18px;
+            }
+            
+            #delete-account-btn:hover {
+                background-color: #c82333 !important;
+                border-color: #bd2130 !important;
+            }
+            
+            .form-element + .form-element {
+                margin-top: 40px;
+            }
+            
+            @media (max-width: 768px) {
+                .modal-content {
+                    margin: 10px;
+                    padding: 20px;
+                }
+                
+                .form-element {
+                    margin-top: 30px !important;
+                }
+            }
+        </style>
+
+    </body>
+</html>

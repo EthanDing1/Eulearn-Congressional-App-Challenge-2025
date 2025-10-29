@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Eulearn | About</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pagetransition.css') }}">
+    
+    <link rel="icon" href="{{ url_for('static', filename='images/owlonly.png') }}" type="image/png">
+
+</head>
+<body class="about-body">
+    <nav>
+        <div class="navdiv">
+            <div class="logo">
+                <a href = "{{url_for('main')}}">
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Eulearn Logo">
+                </a>
+            </div>
+            <ul>
+                <li><a href="{{url_for('solver_page')}}" class="navlink">Integral Solver</a></li>
+                <li><a href="{{url_for('techniques_page')}}" class="navlink">Techniques</a></li>
+                <li><a href="{{url_for('about')}}" class="navlink">About</a></li>
+                <button class="button" id = "login" onclick = "window.location.href = '{{url_for('login_page')}}'">Login</button>
+                <button class = "button" onclick = "window.location.href = '{{url_for('getstarted')}}'">Get Started</button>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="about-title">
+        <h1>We are <span id="eulearn">Eulearn</span></h1>
+    </div>
+
+    <div class="about-mission-section">
+        <div class="founders-box">
+            <img src="{{ url_for('static', filename='images/founders.jpg') }}" alt="Eulearn Founders">
+            <p class="founders-caption">Founders Neil Sharangpani (left) and Ethan Ding</p>
+        </div>
+        
+        <div class="about-content">
+            <h2>Our Mission</h2>
+            <p>Eulearn was created as an affordable solution for Calculus students who struggle with integrals. Our cost-free Integral Solver provides step-by-step explanations to help students understand and succeed in high-level mathematics.</p> 
+            <h3>We seek to...</h3>
+        </div>
+    </div>
+
+    <div class="about-goals">
+        <div class="goal1">
+            <h3>Prepare Students for College and Future Careers</h3>
+            <img src="{{ url_for('static', filename='images/grad.png') }}" alt="Future success in college and career">
+            <p>Proficiency in mathematics can open many doors in higher education and career paths.</p>
+        </div>
+        <div class="goal2">
+            <h3>Enhance Problem-Solving Skills</h3>
+            <img src="{{ url_for('static', filename='images/problemsolving.png') }}" alt="Problem Solving">
+            <p>Step-by-step guidance helps students understand formulas and patterns. Over time, they learn to apply them to solve more complex problems.</p>
+        </div>
+        <div class="goal3">
+            <h3>Improve Confidence for Lifelong Learning</h3>
+            <img src="{{ url_for('static', filename='images/lifelong.png') }}" alt="Lifelong Learning">
+            <p>Mastering difficult concepts such as integrals empowers students to tackle new challenges with confidence.</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/navbar-scroll.js') }}"></script>
+    <script src="{{url_for('static', filename = 'js/auth-check.js')}}"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>Eulearn | Login</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/pagetransition.css')}}">
+        <link rel="icon" href="{{url_for('static', filename='images/owlonly.png')}}" type="image/png">       
+    </head>
+    <body id="login-body">
+        <nav>
+            <div class="navdiv">
+                <div class="logo"><a href="{{url_for('main')}}"><img src="{{url_for('static', filename='images/logo.png')}}" alt="Eulearn Logo"></a></div>
+                <ul>
+                    <li><a href="{{url_for('solver_page')}}" class="navlink">Integral Solver</a></li>
+                    <li><a href="{{url_for('techniques_page')}}" class="navlink">Techniques</a></li>
+                    <li><a href="{{url_for('about')}}" class="navlink">About</a></li>
+                    <button class="button" id="login" onclick="window.location.href='{{url_for('login_page')}}'">Login</button>
+                    <button class="button" onclick="window.location.href='{{url_for('getstarted')}}'">Get Started</button>
+                </ul>
+            </div>
+        </nav>
+        <div class="login-form">
+            <img src="{{url_for('static', filename='images/owlonly.png')}}" alt="Eulearn Owl">
+            <h2>Welcome Back</h2>
+            <div class="form-element">
+                <form novalidate action="">
+                    <div class="input-box">
+                        <input type="text" placeholder="Email Address" title="Email Address" required>
+                        <span class="error-msg"></span>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" placeholder="Password" title="Password" required>
+                        <span class="error-msg"></span>
+                    </div>
+                    <div class="forgot-pass">
+                        <a href="#" title="Forgot Password?">Forgot Password?</a>
+                    </div>
+                    <div class="input-box">
+                        <button type="submit" class="button" title="Login">Login</button>
+                    </div>
+                    <div class="oauth-container">
+                        <a href="{{ url_for('login_google') }}" class="oauth-btn google-btn">
+                            <img src="{{ url_for('static', filename='images/google-logo.png') }}" 
+                                alt="Google Logo" class="oauth-logo">
+                            Log in with Google
+                        </a>
+
+                        <a href="{{ url_for('login_github') }}" class="oauth-btn github-btn">
+                            <div class="oauth-logo-wrapper">
+                                <img src="{{ url_for('static', filename='images/github-logo.png') }}" 
+                                    alt="GitHub Logo" class="oauth-logo">
+                            </div>
+                            Log in with GitHub
+                        </a>
+                    </div>
+
+                    <div class="register-link">
+                        <p>Don't have an account? <a href="{{url_for('getstarted')}}" title="Sign Up">Sign Up</a> for free.</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="forgot-password-modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h3 style="margin-bottom: 15px;">Reset Password</h3>
+                <p style="color: #666; margin-bottom: 20px; font-size: 14px;">
+                    Enter your email address and we'll send you instructions to reset your password.
+                </p>
+                <form id="forgot-password-form" novalidate>
+                    <div class="input-box">
+                        <input type="email" id="forgot-email" placeholder="Email Address" title="Email Address" required>
+                        <span class="error-msg"></span>
+                    </div>
+                    <div class="input-box">
+                        <button type="submit" class="button" title="Send Reset Link">Send Reset Link</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="{{url_for('static', filename='js/navbar-scroll.js')}}"></script>
+        <script src="{{url_for('static', filename='js/login-validation.js')}}"></script>
+        <script src="{{url_for('static', filename='js/auth-check.js')}}"></script>
+        <script src="{{url_for('static', filename='js/forgot-password.js')}}"></script>
+    </body>
+</html>
