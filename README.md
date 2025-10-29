@@ -4,4 +4,4 @@
 1. Clone the repository
 2. Run the backend practice problem generator files
 3. Run app.py
-4. Open a frontend html file (such as main.html) with a server, such as Live Server.
+4. Go to localhost:5000 in a browser page
